@@ -26,7 +26,7 @@ include(PreventInSourceBuild)
 prevent_in_source_build()
 
 option(TD_INSTALL_STATIC_LIBRARIES "Enable installation of static libraries." ON)
-option(TD_INSTALL_SHARED_LIBRARIES "Enable installation of shared libraries." ON)
+option(TD_INSTALL_SHARED_LIBRARIES "Enable installation of shared libraries." OFF)
 option(TD_ENABLE_JNI "Use \"ON\" to enable JNI-compatible TDLib API.")
 option(TD_ENABLE_DOTNET "Use \"ON\" or \"CX\" to enable generation of C++/CLI or C++/CX TDLib API bindings respectively.")
 if (NOT CMAKE_CROSSCOMPILING)

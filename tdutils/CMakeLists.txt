@@ -2,8 +2,8 @@ if ((CMAKE_MAJOR_VERSION LESS 3) OR (CMAKE_VERSION VERSION_LESS "3.10"))
   message(FATAL_ERROR "CMake >= 3.10 is required")
 endif()
 
-option(TDUTILS_ENABLE_INSTALL "Enable installation of the library." ON)
-option(TDUTILS_MIME_TYPE "Generate MIME types conversion; requires gperf." ON)
+option(TDUTILS_ENABLE_INSTALL "Enable installation of the library." OFF)
+option(TDUTILS_MIME_TYPE "Generate MIME types conversion; requires gperf." OFF)
 option(TDUTILS_USE_EXTERNAL_DEPENDENCIES "Use external libraries if available." ON)
 
 if (NOT DEFINED CMAKE_INSTALL_LIBDIR)
