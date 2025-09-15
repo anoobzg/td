@@ -27,16 +27,18 @@ prevent_in_source_build()
 
 option(TD_INSTALL_STATIC_LIBRARIES "Enable installation of static libraries." ON)
 option(TD_INSTALL_SHARED_LIBRARIES "Enable installation of shared libraries." OFF)
-option(TD_ENABLE_JNI "Use \"ON\" to enable JNI-compatible TDLib API.")
-option(TD_ENABLE_DOTNET "Use \"ON\" or \"CX\" to enable generation of C++/CLI or C++/CX TDLib API bindings respectively.")
+option(TD_ENABLE_JNI "Use \"ON\" to enable JNI-compatible TDLib API." OFF)
+option(TD_ENABLE_DOTNET "Use \"ON\" or \"CX\" to enable generation of C++/CLI or C++/CX TDLib API bindings respectively." OFF)
 if (NOT CMAKE_CROSSCOMPILING)
-  option(TD_GENERATE_SOURCE_FILES "Use \"ON\" to just generate TDLib source files.")
+  option(TD_GENERATE_SOURCE_FILES "Use \"ON\" to just generate TDLib source files." OFF)
 endif()
-option(TD_E2E_ONLY "Use \"ON\" to build and install tde2e instead of TDLib.")
+option(TD_E2E_ONLY "Use \"ON\" to build and install tde2e instead of TDLib." OFF)
 
 include(CTest)
 
-option(TD_ENABLE_LTO "Use \"ON\" to enable Link Time Optimization.")
+option(TD_ENABLE_LTO "Use \"ON\" to enable Link Time Optimization." ON)
+
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL" CACHE STRING "")
 
 if (TD_ENABLE_LTO)
   include(CheckIPOSupported)
@@ -172,6 +174,8 @@ if (NOT OPENSSL_FOUND OR TD_GENERATE_SOURCE_FILES)
   if (NOT TD_GENERATE_SOURCE_FILES)
     message(WARNING "Can't find OpenSSL: stop building")
   endif()
+
+  message(STATUS "stop building TDLib")
   return()
 endif()
 

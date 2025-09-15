@@ -31,6 +31,7 @@
 
 #include <atomic>
 #include <type_traits>
+#undef DEBUG
 
 #define VERBOSITY_NAME(x) verbosity_##x
 
